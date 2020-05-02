@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,12 +9,14 @@ namespace EmpregoInfo.Models
 {
     public class Anuncios
     {
+        [Key]
         public int ID { get; set; }
 
 
         public string Tipo { get; set; }
 
-        //descriacao do anuncio, aka o que é prentendido que o utilizador faca
+        public string Titulo { get; set; }
+        //descriacao do anuncio, aka, o que é prentendido que o utilizador façaa
         public string Descricao { get; set; }
 
         public string ExperienciaNecessaria { get; set; }
@@ -22,6 +26,11 @@ namespace EmpregoInfo.Models
         //salario que a empresa oferece
         public float Salario { get; set; }
         //data da criacao do anuncio
-        public DateTime dataCriacaoAnuncio { get; set; }
+        public DateTime DataCriacaoAnuncio { get; set; }
+
+        //FK empresa que colocou o anuncio
+        [ForeignKey(nameof(Empresa))]
+        public int EmpresaFK { get; set; }
+        public Utilizadores Empresa { get; set; }
     }
 }

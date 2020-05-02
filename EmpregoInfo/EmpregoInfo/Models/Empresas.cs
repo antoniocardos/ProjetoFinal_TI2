@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,8 +8,9 @@ namespace EmpregoInfo.Models
 {
     public class Empresas{
 
+        [Key]
         public int ID { get; set; }
-
+        //nome da empresa
         public string Nome { get; set; }
 
         // Morada da sede da empresa
@@ -23,5 +25,7 @@ namespace EmpregoInfo.Models
         public string WebSite { get; set; }
 
         public string Telefone { get; set; }
+
+        public virtual ICollection<Anuncios> ListaDeAnuncios { get; set; }
     }
 }
