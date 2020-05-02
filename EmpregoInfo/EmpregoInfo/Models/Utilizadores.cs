@@ -10,6 +10,12 @@ namespace EmpregoInfo.Models{
     /// </summary>
     public class Utilizadores{
 
+        public Utilizadores(){
+
+            //inicializar a lista de candidaturas que o utilizador fez
+            ListaDeCandidaturas = new HashSet<Candidaturas>();
+
+        }
         [Key]
         public int ID { get; set; }
 
@@ -29,8 +35,10 @@ namespace EmpregoInfo.Models{
         public string Foto { get; set; }
 
         // data da criacao da conta do utilizador
+        [DataType(DataType.Date)]
         public DateTime Data_criacao_conta { get; set; }
 
+        //Lista de candidaturas que o utilizador fez
         public virtual ICollection<Candidaturas> ListaDeCandidaturas { get; set; }
     }
 }

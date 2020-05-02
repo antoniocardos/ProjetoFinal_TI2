@@ -11,7 +11,10 @@ namespace EmpregoInfo.Models
         [Key]
         public int ID { get; set; }
 
-        public DateTime dataCandidatura { get; set; }
+        public DateTime DataCandidatura { get; set; }
+
+        //O porquê do utilizador que se está a candidatar deve ser o escolhido
+        public string Descricao { get; set; }
 
         //criar as FK
 

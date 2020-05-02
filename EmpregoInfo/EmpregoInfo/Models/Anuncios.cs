@@ -31,6 +31,6 @@ namespace EmpregoInfo.Models
         //FK empresa que colocou o anuncio
         [ForeignKey(nameof(Empresa))]
         public int EmpresaFK { get; set; }
-        public Utilizadores Empresa { get; set; }
+        public Empresas Empresa { get; set; }
     }
 }

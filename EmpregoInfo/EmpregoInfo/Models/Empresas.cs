@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 namespace EmpregoInfo.Models
 {
     public class Empresas{
+        public Empresas()
+        {
 
+            //inicializar a lista de anuncios que a empresa fez
+            ListaDeAnuncios = new HashSet<Anuncios>();
+
+        }
         [Key]
         public int ID { get; set; }
         //nome da empresa
