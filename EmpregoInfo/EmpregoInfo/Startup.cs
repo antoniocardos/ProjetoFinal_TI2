@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EmpregoInfo.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +25,16 @@ namespace EmpregoInfo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllersWithViews();
+
+            //****************************************************************************
+            // especificação do 'tipo' e 'localização' da BD
+            services.AddDbContext<EmpregoDB>(options =>
+               options.UseSqlServer(
+                   Configuration.GetConnectionString("ConnectionDB")));
+            //****************************************************************************
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +56,8 @@ namespace EmpregoInfo
             app.UseRouting();
 
             app.UseAuthorization();
-
+            //especificar as ROTAS
+            //em particular, o controller por defeito, e o metodo por defeito, bem como o parametro de pesquisa
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

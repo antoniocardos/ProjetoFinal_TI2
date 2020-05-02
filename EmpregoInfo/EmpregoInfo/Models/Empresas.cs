@@ -26,6 +26,9 @@ namespace EmpregoInfo.Models
 
         public string Telefone { get; set; }
 
+        public string Foto { get; set; }
+
+
         public virtual ICollection<Anuncios> ListaDeAnuncios { get; set; }
     }
 }

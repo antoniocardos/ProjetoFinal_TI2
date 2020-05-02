@@ -30,5 +30,7 @@ namespace EmpregoInfo.Models{
 
         // data da criacao da conta do utilizador
         public DateTime Data_criacao_conta { get; set; }
+
+        public virtual ICollection<Candidaturas> ListaDeCandidaturas { get; set; }
     }
 }
