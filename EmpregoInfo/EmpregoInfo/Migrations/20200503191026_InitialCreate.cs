@@ -33,13 +33,14 @@ namespace EmpregoInfo.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(maxLength: 40, nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(maxLength: 9, nullable: true),
-                    Cidade = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false),
+                    Telefone = table.Column<string>(maxLength: 9, nullable: false),
+                    Cidade = table.Column<string>(nullable: false),
                     Formacao = table.Column<string>(nullable: true),
                     Experiencia = table.Column<string>(nullable: true),
                     Foto = table.Column<string>(nullable: true),
-                    Data_criacao_conta = table.Column<DateTime>(nullable: false)
+                    Data_criacao_conta = table.Column<DateTime>(nullable: false),
+                    Password = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,19 +93,19 @@ namespace EmpregoInfo.Migrations
                         column: x => x.AnuncioFK,
                         principalTable: "Anuncios",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Candidaturas_Empresas_EmpresaFK",
                         column: x => x.EmpresaFK,
                         principalTable: "Empresas",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Candidaturas_Utilizadores_UtilizadorFK",
                         column: x => x.UtilizadorFK,
                         principalTable: "Utilizadores",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
