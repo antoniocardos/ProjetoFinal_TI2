@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmpregoInfo.Migrations
 {
-    public partial class commitInicial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,9 +32,9 @@ namespace EmpregoInfo.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(maxLength: 40, nullable: false),
                     Email = table.Column<string>(nullable: true),
-                    Telefone = table.Column<string>(nullable: true),
+                    Telefone = table.Column<string>(maxLength: 9, nullable: true),
                     Cidade = table.Column<string>(nullable: true),
                     Formacao = table.Column<string>(nullable: true),
                     Experiencia = table.Column<string>(nullable: true),

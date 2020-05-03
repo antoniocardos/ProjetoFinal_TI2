@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpregoInfo.Migrations
 {
     [DbContext(typeof(EmpregoDB))]
-    [Migration("20200502191154_commitInicial")]
-    partial class commitInicial
+    [Migration("20200503171414_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -151,10 +151,13 @@ namespace EmpregoInfo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(9);
 
                     b.HasKey("ID");
 

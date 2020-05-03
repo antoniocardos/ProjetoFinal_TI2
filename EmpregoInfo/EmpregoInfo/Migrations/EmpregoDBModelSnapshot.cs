@@ -149,10 +149,13 @@ namespace EmpregoInfo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(9);
 
                     b.HasKey("ID");
 
