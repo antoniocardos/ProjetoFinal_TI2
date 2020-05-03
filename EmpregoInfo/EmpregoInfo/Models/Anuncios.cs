@@ -25,8 +25,6 @@ namespace EmpregoInfo.Models
 
         //salario que a empresa oferece
         public float Salario { get; set; }
-
-        [DataType(DataType.Date)]
         //data da criacao do anuncio
         public DateTime DataCriacaoAnuncio { get; set; }
 
