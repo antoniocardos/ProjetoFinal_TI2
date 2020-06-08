@@ -26,10 +26,6 @@ namespace EmpregoInfo.Models{
             ErrorMessage = "Só são aceites letras. Cada palavra deve começar por uma Maiúscula, separadas por um espaço em branco.")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "O email é de preenchimento obrigatório")]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-
         [Required(ErrorMessage = "O telefone é de preenchimento obrigatório, mas apenas será visivel para si.")]
         [StringLength(9, ErrorMessage = "O número de telefone deverá ter no máximo 9 números.")]
         [RegularExpression("9[1236][0-9]{7}|2[1-9][0-9]{7}", ErrorMessage = "O número de telefone deverá ter 9 números. E deverá começar por um 9, seguido de 1,2,3 ou 6.")]
@@ -37,34 +33,36 @@ namespace EmpregoInfo.Models{
 
 
         [Required(ErrorMessage = "A cidade é de preenchimento obrigatório")]
-        
         public string Cidade { get; set; }
-         
-        //Escolaridade e formacoes adquiridas por o utilizador
-        public string Formacao { get; set; }
 
-        // experiencia de trabalho
-        public string Experiencia { get; set; }
+        /// <summary>
+        /// Descrição do utilizador, cursos/formações que o utilizador tem, experiência de trabalho, e os seus objectivos pessoais
+        /// </summary
+        [StringLength(300, ErrorMessage = "A descrição do seu perfil, deverá ter no máximo 300 caracteres.")]
+        [Display(Name = "Descrição do seu perfil")]
+        public string DescricaoDoPerfilUtilizador { get; set; }
 
+        /// <summary>
+        /// Fotografica do utilizaor
+        /// </summary>
         public string Foto { get; set; }
 
-        // data da criacao da conta do utilizador
-        [DataType(DataType.Date)]
+        /// <summary>
+        /// curriculo do utilizador, um ficheiro pdf
+        /// </summary>
+        public string CurriculoUtilizador { get; set; }
+
+        public DateTime DataDeNascimento { get; set; }
+        /// <summary>
+        /// data da criacao da conta do utilizador
+        /// </summary>
+        // 
+
         public DateTime Data_criacao_conta { get; set; }
 
         /// <summary>
-        /// https://imar.spaanjaars.com/297/regular-expression-for-a-strong-password
-        /// Passwords will contain at least (1) upper case letter
-        /// Passwords will contain at least(1) lower case letter
-        ///Passwords will contain at least(1) number or special character
-        ///Passwords will contain at least(8) characters in length
+        /// Lista de candidaturas que o utilizador fez
         /// </summary>
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        //Lista de candidaturas que o utilizador fez
         public virtual ICollection<Candidaturas> ListaDeCandidaturas { get; set; }
     }
 }

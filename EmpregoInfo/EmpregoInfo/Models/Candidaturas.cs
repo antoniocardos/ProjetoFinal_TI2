@@ -28,10 +28,15 @@ namespace EmpregoInfo.Models
         public int UtilizadorFK { get; set; }
         public Utilizadores Utilizador { get; set; }
 
-        //FK empresa que colocou o anuncio
-        [ForeignKey(nameof(Empresa))]
-        public int EmpresaFK { get; set; }
-        public Empresas Empresa { get; set; }
+        //Curriculo do Utilizador
+        [ForeignKey(nameof(CurriculoUtilizador))]
+        public int CurriculoUtilizadorFK { get; set; }
+        public Utilizadores CurriculoUtilizador { get; set; }
+
+        //Foto do Utilizador
+        [ForeignKey(nameof(FotoUtilizador))]
+        public int FotoUtilizadorFK { get; set; }
+        public Utilizadores FotoUtilizador { get; set; }
 
 
     }
